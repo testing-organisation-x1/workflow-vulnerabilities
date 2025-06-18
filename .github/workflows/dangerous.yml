@@ -1,0 +1,14 @@
+name: Dangerous Workflow
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  dangerous:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@main
+      - uses: unknown/untrusted-action@v1
+      - run: echo 'API_KEY=sk-secret123456789'
+      - run: echo ${{ secrets.GITHUB_TOKEN }}
