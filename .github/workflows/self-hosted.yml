@@ -1,0 +1,11 @@
+name: Self-hosted Runner Risk
+on:
+  pull_request_target:
+
+jobs:
+  risky:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm install
+      - run: npm run build
